@@ -12,10 +12,10 @@ var
 
 var HAVE_NFT = 0;
 
-var EMSCRIPTEN_ROOT = process.env.EMSCRIPTEN;
+var EMSCRIPTEN_ROOT = process.env.EMSCRIPTEN_ROOT;
 var ARTOOLKITX_ROOT = process.env.ARTOOLKITX_ROOT || "../emscripten/artoolkitx";
 
-if (!EMSCRIPTEN_PATH) {
+if (!EMSCRIPTEN_ROOT) {
 	console.log("\nWarning: EMSCRIPTEN environment variable not found.")
 	console.log("If you get a \"command not found\" error,\ndo `source <path to emsdk>/emsdk_env.sh` and try again.");
 }
@@ -44,8 +44,6 @@ MAIN_SOURCES = MAIN_SOURCES.map(function(src) {
 var ar_sources = [
 	'AR/arLabelingSub/*.c',
 	'AR/*.c',
-	'ARICP/*.c',
-	'ARMulti/*.c',
   'ARUtil/log.c',
   'ARUtil/file_utils.c',
 
