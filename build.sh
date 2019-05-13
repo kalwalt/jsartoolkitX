@@ -15,7 +15,7 @@ set -x
 
 OURDIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
-if [[ -z "${EMSCRIPTEN}" ]]; then
+if [[ -z "${EMSCRIPTEN_ROOT}" ]]; then
     # sudo apt-get update
     wget -q https://s3.amazonaws.com/mozilla-games/emscripten/releases/emsdk_portable.tar.gz
 

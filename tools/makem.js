@@ -12,16 +12,16 @@ var
 
 var HAVE_NFT = 0;
 
-var EMSCRIPTEN_PATH = process.env.EMSCRIPTEN;
-var ARTOOLKIT5_ROOT = process.env.ARTOOLKIT5_ROOT || "../emscripten/artoolkitx";
+var EMSCRIPTEN_ROOT = process.env.EMSCRIPTEN;
+var ARTOOLKITX_ROOT = process.env.ARTOOLKITX_ROOT || "../emscripten/artoolkitx";
 
 if (!EMSCRIPTEN_PATH) {
 	console.log("\nWarning: EMSCRIPTEN environment variable not found.")
 	console.log("If you get a \"command not found\" error,\ndo `source <path to emsdk>/emsdk_env.sh` and try again.");
 }
 
-var EMCC = EMSCRIPTEN_PATH ? path.resolve(EMSCRIPTEN_PATH, 'emcc') : 'emcc';
-var EMPP = EMSCRIPTEN_PATH ? path.resolve(EMSCRIPTEN_PATH, 'em++') : 'em++';
+var EMCC = EMSCRIPTEN_ROOT ? path.resolve(EMSCRIPTEN_ROOT, 'emcc') : 'emcc';
+var EMPP = EMSCRIPTEN_ROOT ? path.resolve(EMSCRIPTEN_ROOT, 'em++') : 'em++';
 var OPTIMIZE_FLAGS = ' -Oz '; // -Oz for smallest size
 // var OPTIMIZE_FLAGS = ' ';
 var MEM = 256 * 1024 * 1024; // 64MB
@@ -46,11 +46,11 @@ var ar_sources = [
 	'AR/*.c',
 	'ARICP/*.c',
 	'ARMulti/*.c',
-    'ARUtil/log.c',
-    'ARUtil/file_utils.c',
+  'ARUtil/log.c',
+  'ARUtil/file_utils.c',
 
 ].map(function(src) {
-	return path.resolve(__dirname, ARTOOLKIT5_ROOT + '/lib/SRC/', src);
+	return path.resolve(__dirname, ARTOOLKITX_ROOT + '/Source/ARX/', src);
 });
 
 var ar2_sources = [
@@ -71,7 +71,7 @@ var ar2_sources = [
 	'coord.c',
 	'util.c',
 ].map(function(src) {
-	return path.resolve(__dirname, ARTOOLKIT5_ROOT + '/Source/ARX/AR2/', src);
+	return path.resolve(__dirname, ARTOOLKITX_ROOT + '/Source/ARX/AR2/', src);
 });
 
 var kpm_sources = [
@@ -95,7 +95,7 @@ var kpm_sources = [
 	'FreakMatcher/framework/logger.c*',
 	'FreakMatcher/framework/timers.c*',
 ].map(function(src) {
-	return path.resolve(__dirname, ARTOOLKIT5_ROOT + '/lib/SRC/KPM/', src);
+	return path.resolve(__dirname, ARTOOLKITX_ROOT + '/Source/ARX/KPM/', src);
 });
 
 if (HAVE_NFT) {
@@ -135,7 +135,7 @@ DEBUG_FLAGS += '  -s DEMANGLE_SUPPORT=1 ';
 
 
 var INCLUDES = [
-	path.resolve(__dirname, ARTOOLKIT5_ROOT + '/include'),
+	path.resolve(__dirname, ARTOOLKITX_ROOT + '/include'),
 	OUTPUT_PATH,
 	SOURCE_PATH,
 	// 'lib/SRC/KPM/FreakMatcher',
