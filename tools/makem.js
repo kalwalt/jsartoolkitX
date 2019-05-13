@@ -14,6 +14,7 @@ var HAVE_NFT = 0;
 
 var EMSCRIPTEN_ROOT = process.env.EMSCRIPTEN_ROOT;
 var ARTOOLKITX_ROOT = process.env.ARTOOLKITX_ROOT || "../emscripten/artoolkitx";
+var CMAKE_TOOLCHAIN_FILE = path.resolve(EMSCRIPTEN_ROOT, '/cmake/Modules/Platform/Emscripten.cmake');
 
 if (!EMSCRIPTEN_ROOT) {
 	console.log("\nWarning: EMSCRIPTEN environment variable not found.")

@@ -39,7 +39,7 @@ cd $OURDIR
 
 # Clone ARToolKit5 project to get the latest source files. From within jsartoolkit5 directory do git submodule update --init.
 # If you already cloned ARToolKit5 to a different directory make sure ARTOOLKIT5_ROOT environment variable exists
-if [[ -z "${ARTOOLKIT5_ROOT}" ]]; then
+if [[ -z "${ARTOOLKITX_ROOT}" ]]; then
     git submodule update --init
 fi
 
