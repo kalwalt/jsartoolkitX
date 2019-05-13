@@ -47,6 +47,7 @@ var ar_sources = [
 	'AR/*.c',
   'ARUtil/log.c',
   'ARUtil/file_utils.c',
+	'ARVideo/videoLuma.c',
 
 ].map(function(src) {
 	return path.resolve(__dirname, ARTOOLKITX_ROOT + '/Source/ARX/', src);
@@ -110,16 +111,17 @@ var FLAGS = '' + OPTIMIZE_FLAGS;
 FLAGS += ' -Wno-warn-absolute-paths ';
 FLAGS += ' -s TOTAL_MEMORY=' + MEM + ' ';
 FLAGS += ' -s USE_ZLIB=1';
+//FLAGS += ' -Werror -Wimplicit-function-declaration ';
 // FLAGS += ' -s FULL_ES2=1 '
 FLAGS += ' --memory-init-file 0 '; // for memless file
-
+FLAGS += ' -fPIC -Wl,-rpath-link ';
 var PRE_FLAGS = ' --pre-js ' + path.resolve(__dirname, '../js/artoolkit.api.js') +' ';
 
 FLAGS += ' --bind ';
-FLAGS += ' -msse';
-FLAGS += ' -msse2';
-FLAGS += ' -msse3';
-FLAGS += ' -mssse3';
+//FLAGS += ' -msse';
+//FLAGS += ' -msse2';
+//FLAGS += ' -msse3';
+//FLAGS += ' -mssse3';
 
 
 
@@ -134,7 +136,14 @@ DEBUG_FLAGS += '  -s DEMANGLE_SUPPORT=1 ';
 
 
 var INCLUDES = [
-	path.resolve(__dirname, ARTOOLKITX_ROOT + '/include'),
+	path.resolve(__dirname, ARTOOLKITX_ROOT + '/Source/ARX/include'),
+	path.resolve(__dirname, ARTOOLKITX_ROOT + '/Source/ARX/AR/include'),
+	path.resolve(__dirname, ARTOOLKITX_ROOT + '/Source/ARX/AR2/include'),
+	path.resolve(__dirname, ARTOOLKITX_ROOT + '/Source/ARX/ARG/include'),
+	path.resolve(__dirname, ARTOOLKITX_ROOT + '/Source/ARX/ARUtil/include'),
+	path.resolve(__dirname, ARTOOLKITX_ROOT + '/Source/ARX/ARVideo/include'),
+	path.resolve(__dirname, ARTOOLKITX_ROOT + '/Source/ARX/KPM/include'),
+	path.resolve(__dirname, ARTOOLKITX_ROOT + '/Source/ARX/OCVT/include'),
 	OUTPUT_PATH,
 	SOURCE_PATH,
 	// 'lib/SRC/KPM/FreakMatcher',

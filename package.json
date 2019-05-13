@@ -33,7 +33,7 @@
     "watch": "^0.18.0"
   },
   "scripts": {
-    "build": "cd emscripten/artoolkitx/Source && ${EMSCRIPTEN_ROOT}/emconfigure cmake /home/walter/kalwalt-github/jsartoolkitX/emscripten/artoolkitx/build . && make && cd ../../ && node tools/makem.js; echo Built at `date`",
+    "build": "cd emscripten/artoolkitx/ && /home/walter/emsdk/emscripten/1.38.31/emconfigure ./Configure && cd ../../ && node tools/makem.js; echo Built at `date`",
     "watch": "./node_modules/.bin/watch 'npm run build' ./js/",
     "create-doc": "grunt jsdoc",
     "test": "http-server -p 8085",
