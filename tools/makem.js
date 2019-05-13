@@ -45,6 +45,7 @@ MAIN_SOURCES = MAIN_SOURCES.map(function(src) {
 var ar_sources = [
 	'AR/arLabelingSub/*.c',
 	'AR/*.c',
+	'ARG/*.c',
   'ARUtil/log.c',
   'ARUtil/file_utils.c',
 	'ARVideo/videoLuma.c',
@@ -105,6 +106,7 @@ if (HAVE_NFT) {
 }
 
 var DEFINES = ' ';
+var DEFINES = ' -DARX_EXPORTS=1 -DARX_TARGET_PLATFORM_LINUX=1 ';
 if (HAVE_NFT) DEFINES += ' -D HAVE_NFT ';
 
 var FLAGS = '' + OPTIMIZE_FLAGS;
