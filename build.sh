@@ -32,12 +32,12 @@ if [[ -z "${EMSCRIPTEN}" ]]; then
 
     source ./emsdk_env.sh
 
-    mv $OURDIR/emscripten/artoolkit5/include/AR/config.h.in $OURDIR/emscripten/artoolkit5/include/AR/config.h
+    mv $OURDIR/emscripten/artoolkitx/Source/ARX/AR/include/ARX/AR/config.h.in $OURDIR/emscripten/artoolkitx/Source/ARX/AR/include/ARX/AR/config.h
 fi
 
 cd $OURDIR
 
-# Clone ARToolKit5 project to get the latest source files. From within jsartoolkit5 directory do git submodule update --init. 
+# Clone ARToolKit5 project to get the latest source files. From within jsartoolkit5 directory do git submodule update --init.
 # If you already cloned ARToolKit5 to a different directory make sure ARTOOLKIT5_ROOT environment variable exists
 if [[ -z "${ARTOOLKIT5_ROOT}" ]]; then
     git submodule update --init
