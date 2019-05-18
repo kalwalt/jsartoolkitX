@@ -35,7 +35,9 @@ var BUILD_WASM_FILE = 'artoolkit_wasm.js';
 var BUILD_MIN_FILE = 'artoolkit.min.js';
 
 var MAIN_SOURCES = [
-	'ARToolKitJS.cpp'
+	'ARX_bindings.cpp',
+	'ARX_js.cpp',
+	'ARX_bindings.cpp',
 ];
 
 MAIN_SOURCES = MAIN_SOURCES.map(function(src) {
@@ -140,7 +142,7 @@ DEBUG_FLAGS += '  -s DEMANGLE_SUPPORT=1 ';
 var INCLUDES = [
 	path.resolve(__dirname, ARTOOLKITX_ROOT + '/Source/ARX/include'),
 	path.resolve(__dirname, ARTOOLKITX_ROOT + '/Source/ARX/AR/include'),
-	//path.resolve(__dirname, ARTOOLKITX_ROOT + '/Source/ARX/AR2/include'),
+	path.resolve(__dirname, ARTOOLKITX_ROOT + '/Source/ARX/AR2/include'),
 	path.resolve(__dirname, ARTOOLKITX_ROOT + '/Source/ARX/ARG/include'),
 	path.resolve(__dirname, ARTOOLKITX_ROOT + '/Source/ARX/ARUtil/include'),
 	path.resolve(__dirname, ARTOOLKITX_ROOT + '/Source/ARX/ARVideo/include'),
